@@ -1,4 +1,9 @@
-【SIGNATE】第３回金融データ活用チャレンジ 41th Solution
+---
+title: "【SIGNATE】第３回金融データ活用チャレンジ 41th Solution"
+date: "2025-02-15"
+tags: ["RAG", "LLM", "SIGNATE", "LangChain", "LangGraph"]
+author: "nora600"
+---
 # About Competition
 2025年1月15日～2月12日までの間で、SIGNATEのLLMコンペ **（金融庁共催）第３回金融データ活用チャレンジ** が開催されました。<br>
 https://signate.jp/competitions/1515
