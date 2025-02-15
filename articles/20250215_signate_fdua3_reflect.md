@@ -27,7 +27,7 @@ LLMコンペどころか、LLMを使ったプログラム自体が始めての�
 # Solution概要
 ### 全体概要図
 <!-- ![全体概要図](https://storage.googleapis.com/zenn-user-upload/6cd64f5d74ed-20250215.jpg)<br> -->
-![全体概要図](images/20250215_signate_fdua3_reflect/flow.jpg)<br>
+![全体概要図](/images/20250215_signate_fdua3_reflect/flow.jpg)<br>
 
 ### 解法のポイント
 - **前処理**
@@ -49,7 +49,7 @@ LLMコンペどころか、LLMを使ったプログラム自体が始めての�
 # 前処理
 ここからパート毎の詳細な実装、及び課題・やりのこしたこと等を書き連ねていきます。まずは前処理の部分です。<br>
 <!-- ![前処理部](https://storage.googleapis.com/zenn-user-upload/d770761e3a02-20250215.jpg)<br> -->
-![前処理部](images/20250215_signate_fdua3_reflect/pre-process.jpg)<br>
+![前処理部](/images/20250215_signate_fdua3_reflect/pre-process.jpg)<br>
 
 ### LLMによるテキスト変換
 fitzを使って1ページずつ画像として読み取り、BASE64エンコードに変換し、リクエストbodyに貼り付けてAPIで流し込んで、**Gemini 1.5 Pro** に Markdown 形式で文字起こし (キャプション) させた。以下、該当処理部の抜粋。<br>
@@ -119,7 +119,7 @@ if page_number == 10:
 ::::
 # ベクトル化
 <!-- ![ベクトル化処理部](https://storage.googleapis.com/zenn-user-upload/6303697c43f9-20250215.jpg)<br> -->
-![ベクトル化処理部](images/20250215_signate_fdua3_reflect/vectorise.jpg)<br>
+![ベクトル化処理部](/images/20250215_signate_fdua3_reflect/vectorise.jpg)<br>
 
 RecursiveCharacterTextSplitter を使って、以下の3パターンのchunk-sizeでベクトル化したものをChromaに格納。<br>
 値自体にそこまで根拠は無いが、気持ちとしては、`(chunk_size, chunk_overlap) = (500, 100)` をベースとして、なるべく多様性のあるデータを引っ張ってこれるように、開始点が揃わないように設定した。<br>
@@ -153,7 +153,7 @@ for i in tqdm(range(0, len(docs), batch_size), leave=True):
 # パイプライン
 パイプライン実装は、今回最大のモチベーションであり、[今回のコンペ参加のきっかけとなった書籍](https://gihyo.jp/book/2024/978-4-297-14530-9) の実践の場と考えていたので、**LangGraph** で実装しました。<br>
 <!-- ![パイプライン](https://storage.googleapis.com/zenn-user-upload/eaff4921e872-20250215.jpg) -->
-![パイプライン](images/20250215_signate_fdua3_reflect/pipeline.jpg)
+![パイプライン](/images/20250215_signate_fdua3_reflect/pipeline.jpg)
 
 ## クエリ拡張 (QueryAlbumentator)
 与えられた質問自体は、どことなく言葉足らずだったり、目的語がはっきりしないものもあったので、そのままベクトル検索しても不十分と考え、質問文をLLMを使って増幅させることとしました。<br>
