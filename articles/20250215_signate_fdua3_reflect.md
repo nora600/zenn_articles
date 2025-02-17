@@ -394,6 +394,7 @@ class AnswerGenerator:
             try:
                 return chain.invoke({"query": query, "context": contents, "answers": answers, "feedbacks": feedbacks})
 ```
+::::
 <br>
 こちらのプロンプトについては、私は参加していませんでしたが、前回の [RAG-1グランプリ](https://signate.jp/competitions/1407) の [こちらの記事](https://zenn.dev/chips0711/articles/72f298ec78b0c9) をベースに、以下の様な観点で色々と試行錯誤しながら育てていったら、こんなモンスタープロンプトに行きついてしまいました 汗）<br>
 - 今回のコンペでは、検証データとその模範解答 が与えられていたので、それを参考に、Few-shot プロンプト にした。
@@ -403,6 +404,7 @@ class AnswerGenerator:
 
 ## レビュー (AnswerReflector)
 これも恥を忍んでコードを抜粋します。<br>
+
 ::::details レビュー部実装コード
 ```python
 class AnswerReflector:
