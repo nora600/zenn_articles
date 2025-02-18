@@ -29,7 +29,7 @@ LLMコンペどころか、LLMを使ったプログラム自体が始めての�
 |Chat|所属会社契約|**Gemini 1.5 Pro**  (gemini-1.5-pro-002) |
 
 マイクロソフト社様から、**Azure OpenAI GPT-4o mini** もご提供頂いてたのですが、ハンズオンにて「回答生成 (Generate) 処理でのみ利用可能であり、前処理での利用は不可」とのアナウンスがあったとの事だった為、ちょうど前処理の方式変更 (non-LLM→LLM全振り) の検討していたところだったので、途中から Chat API は私が所属している会社で契約している **GPT-4o**、及び **Gemini 1.5 Pro** を使いました。<br>
-上記以外のツールについては、コンペのルール的には無制限利用可能だったのですが、基本的には無償利用可能なOSSを活用させて頂きました。<br>
+上記以外のツールについては、コンペのルール的にはGUIツールでなければ無制限利用可能だったのですが、基本的には無償利用可能なOSSを活用させて頂きました。<br>
 
 # Solution概要
 ### 全体概要図
@@ -47,7 +47,7 @@ LLMコンペどころか、LLMを使ったプログラム自体が始めての�
     - 与えられた質問をLLMを使って2つの違う表現に言い換えて、`albumented_queries` を作成。ベクトル検索時にヒットしやすくした。
     - 合わせて `company_list` の中のどの `company` に関する質問なのかを特定させて、検索対象を特定させた。
   - **コンテキスト作成 (ContextGenerator)**
-    - QueryAlbumentator により得られた `albumented_queries` と `company` を入力として、3つの ChromaDB に対して検索し、メインプロンプトに含める `context` を作成。
+    - QueryAlbumentator により得られた `albumented_queries` と `company` を入力として、3つの ChromaDB に対して検索し、メインプロンプトに含める `context` を作成した。
   - **回答作成 (AnswerGenerator)**
     - 質問に対する答えを `context` から (`feedback` がある場合はそれも踏まえて) 生成させる。その際に、どういうロジックでその答えに行きついたのか、根拠 (`reason`) も出力させる。
   - **レビュー (AnswerReflector)**
