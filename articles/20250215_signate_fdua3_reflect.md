@@ -158,6 +158,11 @@ for i in tqdm(range(0, len(docs), batch_size), leave=True):
     while retries < max_retries:
         try:
             db.add_documents(batch_docs)
+            break
+        except Exception as e:
+            retries += 1
+            wait_time = min(2**retries, max_wait)
+            time.sleep(wait_time)
 ```
 ::::
 
