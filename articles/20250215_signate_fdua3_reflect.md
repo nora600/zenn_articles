@@ -4,11 +4,10 @@ date: "2025-02-15"
 tags: ["RAG", "LLM", "SIGNATE", "LangChain", "LangGraph"]
 author: "nora600"
 ---
-<br><br>
 
 # About Competition
-2025年1月15日～2月12日の間、SIGNATEのLLMコンペ **（金融庁共催）第３回金融データ活用チャレンジ** が開催されました。<br>
-https://signate.jp/competitions/1515
+2025年1月15日～2月12日の間、SIGNATEのLLMコンペ [（金融庁共催）第３回金融データ活用チャレンジ](https://user.competition.signate.jp/ja/competition/detail/?competition=1656bf8a742049ba87033ec1c606a679) が開催されました。<br>
+
 
 様々な企業のESG（環境・社会・ガバナンス）レポートや統合報告書を入力として、それに関連する質問に対して、自動的かつ正確に回答できるRAGシステムを構築し、その回答の正確性を競うコンペでした。<br>
 私は、ちょうど [LangChainとLangGraphによるRAG・AIエージェント［実践］入門](https://gihyo.jp/book/2024/978-4-297-14530-9) を冬休みに読み進めていたこともあり、初体験となるLLMコンペに書籍片手に参加させて頂きました。<br>
@@ -22,13 +21,13 @@ LLMコンペどころか、LLMを使ったプログラム自体が始めての�
 
 # 使用したツール
 今回のコンペでは、マイクロソフト社様を始めとして、様々な企業からツールを無償で提供頂けました。私はその中で、以下のAPIを使わせて頂きました。<br>
-|種類|提供元|モデル名|
+|種類|モデル名||
 |---|---|---|
-|Embedding|マイクロソフト社様提供|**Azure OpenAI text-embedding-3-large**|
-|Chat|所属会社契約|**Azure OpenAI GPT-4o** (2024-08-06) |
-|Chat|所属会社契約|**Gemini 1.5 Pro**  (gemini-1.5-pro-002) |
+|Embedding|**Azure OpenAI text-embedding-3-large**|※マイクロソフト社様提供
+|Chat|**Azure OpenAI GPT-4o** (2024-08-06) |
+|Chat|**Gemini 1.5 Pro**  (gemini-1.5-pro-002) |
 
-マイクロソフト社様から、**Azure OpenAI GPT-4o mini** もご提供頂いてたのですが、ハンズオンにて「回答生成 (Generate) 処理でのみ利用可能であり、前処理での利用は不可」とのアナウンスがあったとの事だった為、ちょうど前処理の方式変更 (non-LLM→LLM全振り) の検討していたところだったので、途中から Chat API は私が所属している会社で契約している **GPT-4o**、及び **Gemini 1.5 Pro** を使いました。<br>
+マイクロソフト社様から、**Azure OpenAI GPT-4o mini** もご提供頂いてたのですが、ハンズオンにて「回答生成 (Generate) 処理でのみ利用可能であり、前処理での利用は不可」とのアナウンスがあったとの事だった為、ちょうど前処理の方式変更 (non-LLM→LLM全振り) の検討していたところだったので、途中から Chat API は個人的に私が使える状態にあった **GPT-4o**、及び **Gemini 1.5 Pro** を使いました。<br>
 上記以外のツールについては、コンペのルール的にはGUIツールでなければ無制限利用可能だったのですが、基本的には無償利用可能なOSSを活用させて頂きました。<br>
 
 # Solution概要
